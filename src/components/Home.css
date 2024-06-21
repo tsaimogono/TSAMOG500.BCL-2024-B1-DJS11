@@ -54,15 +54,34 @@
 }
 
 .podcast-item {
-  display: flex;
-  flex-direction: column;
+  flex: 1 1 calc(25% - 20px); /* Show 4 items per row */
+  max-width: calc(25% - 20px);
   background-color: #1f1f1f; 
   border: 1px solid #333333b3; 
   border-radius: 4px;
   overflow: hidden;
   transition: background-color 0.3s, box-shadow 0.3s;
-  width: 100%; 
-  max-width: calc(33.333% - 20px); 
+}
+
+@media (max-width: 1200px) {
+  .podcast-item {
+    flex: 1 1 calc(33.333% - 20px); /* Show 3 items per row on smaller screens */
+    max-width: calc(33.333% - 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .podcast-item {
+    flex: 1 1 calc(50% - 20px); /* Show 2 items per row on even smaller screens */
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .podcast-item {
+    flex: 1 1 calc(100% - 20px); /* Show 1 item per row on very small screens */
+    max-width: calc(100% - 20px);
+  }
 }
 
 .podcast-item:hover {

@@ -1,14 +1,15 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
-const AudioPlayer = ({ src, isPlaying, onPlay, onPause }) => {
+const AudioPlayer = ({ src, onPlay, onPause }) => {
   const audioRef = useRef(null);
+  const [audioPlaying, setAudioPlaying] = useState(false);
 
   useEffect(() => {
     const audioElement = audioRef.current;
 
     const handleLoadedData = () => {
       console.log('Audio loaded');
-      if (isPlaying) {
+      if (audioPlaying) {
         audioElement.play().catch((error) => {
           console.error('Play interrupted:', error);
         });
@@ -26,12 +27,22 @@ const AudioPlayer = ({ src, isPlaying, onPlay, onPause }) => {
       audioElement.removeEventListener('loadeddata', handleLoadedData);
       audioElement.removeEventListener('error', handleError);
     };
-  }, [src, isPlaying]);
+  }, [src, audioPlaying]);
+
+  const handlePlay = () => {
+    setAudioPlaying(true);
+    onPlay(); // Call onPlay callback if provided
+  };
+
+  const handlePause = () => {
+    setAudioPlaying(false);
+    onPause(); // Call onPause callback if provided
+  };
 
   useEffect(() => {
     const audioElement = audioRef.current;
 
-    if (isPlaying) {
+    if (audioPlaying) {
       if (audioElement.paused) {
         audioElement.play().catch((error) => {
           console.error('Play interrupted:', error);
@@ -42,15 +53,15 @@ const AudioPlayer = ({ src, isPlaying, onPlay, onPause }) => {
         audioElement.pause();
       }
     }
-  }, [isPlaying]);
+  }, [audioPlaying]);
 
   return (
     <div className="audio-player">
       <audio ref={audioRef} src={src} />
-      {isPlaying ? (
-        <button onClick={onPause}>Pause</button>
+      {audioPlaying ? (
+        <button onClick={handlePause}>Pause</button>
       ) : (
-        <button onClick={onPlay}>Play</button>
+        <button onClick={handlePlay}>Play</button>
       )}
     </div>
   );

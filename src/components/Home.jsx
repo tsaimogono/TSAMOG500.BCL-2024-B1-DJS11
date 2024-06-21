@@ -164,8 +164,7 @@ const Home = () => {
               <p>Genre: {podcast.genres.map(genreId => genres[genreId]).join(', ')}</p> 
               <p>Last Update: {formatDate(podcast.updated)}</p> 
               <div className="action-buttons">
-                <AudioPlayer src={podcast.audioSrc} />
-                <i
+              <i
                   className={`fas fa-heart ${isFavorite(podcast.id) ? 'favorite-icon favorite' : 'favorite-icon'}`}
                   onClick={() => handleFavoriteToggle(podcast)}
                 ></i>
