@@ -11,7 +11,6 @@ const Header = () => {
     setSelectedCategory('All');// Set selected category to 'All' when Home link is clicked
   };
 
-  };
 
   return (
     <header className="header">
@@ -33,5 +32,6 @@ const Header = () => {
     </header>
   );
 };
+
 
 export default Header;
