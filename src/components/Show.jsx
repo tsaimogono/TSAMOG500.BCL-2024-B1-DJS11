@@ -16,6 +16,7 @@ const Show = () => {
   const [playingEpisode, setPlayingEpisode] = useState(null);
   const [favorites, setFavorites] = useState({}); // State to manage favorite episodes
 
+  // useEffect hook to fetch show data when the component mounts or when showId changes
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,6 +33,7 @@ const Show = () => {
     fetchData();
   }, [showId]);
 
+// Function to handle season selection
   const handleSeasonSelect = (seasonNumber) => {
     setSelectedSeason(seasonNumber);
     setOpenDropdown(openDropdown === seasonNumber ? null : seasonNumber);
@@ -45,7 +47,8 @@ const Show = () => {
   const pauseEpisode = () => {
     setPlayingEpisode(null);
   };
-
+  
+// Function to toggle favorite status of an episode
   const toggleFavorite = (episodeId) => {
     setFavorites((prevFavorites) => ({
       ...prevFavorites,

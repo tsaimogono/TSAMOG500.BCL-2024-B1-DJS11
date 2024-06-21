@@ -11,6 +11,8 @@ import { FavoritesProvider } from './contexts/FavouriteContext';
 
 const App = () => {
   return (
+
+    // Provide category context to the app
     <CategoryProvider>
       <FavoritesProvider>
         <Router>

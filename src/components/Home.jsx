@@ -28,10 +28,11 @@ const Home = () => {
     9: 'Kids and Family',
   };
 
+  // Fetch podcast previews on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPreviews();
+        const data = await fetchPreviews();// Fetch podcast previews
         setPreviews(data);
         setFilteredPreviews(data);
         setLoading(false);
@@ -45,6 +46,7 @@ const Home = () => {
     fetchData();
   }, []);
 
+// Sort and filter previews based on selected criteria
   useEffect(() => {
     const sortData = (criteria, data) => {
       let sortedData = [...data];
@@ -83,11 +85,12 @@ const Home = () => {
       setFilteredPreviews(filtered);
     }
   };
-
+ // Handle sorting criteria change
   const handleSortChange = (criteria) => {
     setSortCriteria(criteria);
   };
 
+// Handle favorite toggle
   const handleFavoriteToggle = (podcast) => {
     if (isFavorite(podcast.id)) {
       removeFavorite(podcast.id);
@@ -96,6 +99,7 @@ const Home = () => {
     }
   };
 
+  // Handle search input change
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
     filterPreviews(event.target.value);

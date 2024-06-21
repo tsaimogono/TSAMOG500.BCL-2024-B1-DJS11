@@ -15,7 +15,7 @@ const Show = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [playingEpisode, setPlayingEpisode] = useState(null);
   const [favorites, setFavorites] = useState({}); // State to manage favorite episodes
-
+// Fetch show data when component mounts or when showId changes
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,7 +29,7 @@ const Show = () => {
       }
     };
 
-    fetchData();
+    fetchData();// Call the fetchData function
   }, [showId]);
 
   const handleSeasonSelect = (seasonNumber) => {
@@ -46,10 +46,11 @@ const Show = () => {
     setPlayingEpisode(null);
   };
 
+  // Handle toggling a favorite episode
   const toggleFavorite = (episodeId) => {
     setFavorites((prevFavorites) => ({
       ...prevFavorites,
-      [episodeId]: !prevFavorites[episodeId],
+      [episodeId]: !prevFavorites[episodeId],// Toggle the favorite status for the episode
     }));
   };
 

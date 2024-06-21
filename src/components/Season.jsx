@@ -1,6 +1,7 @@
 import React from 'react';
 import Episode from './Episode';  // Adjust path as needed
 
+// Season component: displays a season and its episodes
 const Season = ({ season, onPlay, onPause }) => {
   return (
     <div className="season">
