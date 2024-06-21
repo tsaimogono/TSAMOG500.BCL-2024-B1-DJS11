@@ -7,6 +7,7 @@ const Genre = () => {
   const [genre, setGenre] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // useEffect hook to fetch genre data based on genreId
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -15,13 +16,13 @@ const Genre = () => {
         setLoading(false);
       } catch (error) {
         console.error(`Error fetching genre with ID ${genreId}:`, error);
-        setLoading(false);
+        setLoading(false);// Set loading state to false in case of error
       }
     };
 
     fetchData();
   }, [genreId]);
-
+// Render loading state while waiting for data.
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -29,7 +30,7 @@ const Genre = () => {
   if (!genre) {
     return <div>Genre not found</div>;
   }
-
+// Render genre details and list of shows once data is loaded
   return (
     <div>
       <h1>{genre.name} Podcasts</h1>
