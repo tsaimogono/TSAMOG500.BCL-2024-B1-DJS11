@@ -5,9 +5,12 @@ import { CategoryContext } from './context/CatergoryContext';
 import './Header.css'; // Import your CSS file for header styles
 
 const Header = () => {
-  const { setSelectedCategory } = useContext(CategoryContext);
+  const { setSelectedCategory } = useContext(CategoryContext)// Destructure setSelectedCategory from CategoryContext
+   // Function to handle click on Home link and set selected category to 'All
   const handleHomeClick = () => {
-    setSelectedCategory('All');
+    setSelectedCategory('All');// Set selected category to 'All' when Home link is clicked
+  };
+
   };
 
   return (
