@@ -84,7 +84,8 @@ Feel free to explore the features, browse podcasts, and test the functionality o
 
 Experience the PodStream Web App in action! Visit our live demo hosted on Netlify:
 
-[PodStream Web App]{https://magic-voices.netlify.app}
+[PodStream Web App]
+https://magic-voices.netlify.app
 
 
 ## 🌟 Features
